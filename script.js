@@ -87,4 +87,37 @@ document.addEventListener('DOMContentLoaded', () => {
             this.reset(); // Clear the form
         });
     }
+
+    // Hamburger menu functionality
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+            hamburger.classList.toggle('active'); // Toggle active class for hamburger animation
+
+            // Animate links
+            navLinks.querySelectorAll('li').forEach((link, index) => {
+                if (navLinks.classList.contains('nav-active')) {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                } else {
+                    link.style.animation = 'none';
+                }
+            });
+        });
+
+        // Close nav when a link is clicked (for mobile)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('nav-active')) {
+                    navLinks.classList.remove('nav-active');
+                    hamburger.classList.remove('active');
+                    navLinks.querySelectorAll('li').forEach(item => {
+                        item.style.animation = 'none'; // Reset animation
+                    });
+                }
+            });
+        });
+    }
 });
