@@ -89,10 +89,11 @@
         <div class="container">
             <h2>Get in Touch</h2>
             <p>I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
-            <form class="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
+            <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="18cef367-f09a-4901-8380-30d7c4785954">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
                 <button type="submit" class="btn">Send Message</button>
             </form>
             <div class="social-links">
