@@ -78,15 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(typeWriter, 1000);
     }
 
-    // Simple form submission (for demonstration, no backend)
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            this.reset(); // Clear the form
-        });
-    }
+
 
     // Hamburger menu functionality
     const hamburger = document.querySelector('.hamburger');
@@ -95,27 +87,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('nav-active');
-            hamburger.classList.toggle('active'); // Toggle active class for hamburger animation
-
-            // Animate links
-            navLinks.querySelectorAll('li').forEach((link, index) => {
-                if (navLinks.classList.contains('nav-active')) {
-                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-                } else {
-                    link.style.animation = 'none';
-                }
-            });
+            hamburger.classList.toggle('active');
         });
 
-        // Close nav when a link is clicked (for mobile)
+        // Close nav when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                if (navLinks.classList.contains('nav-active')) {
+                    navLinks.classList.remove('nav-active');
+                    hamburger.classList.remove('active');
+                }
+            }
+        });
+
+        // Close nav when a link is clicked
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (navLinks.classList.contains('nav-active')) {
                     navLinks.classList.remove('nav-active');
                     hamburger.classList.remove('active');
-                    navLinks.querySelectorAll('li').forEach(item => {
-                        item.style.animation = 'none'; // Reset animation
-                    });
                 }
             });
         });

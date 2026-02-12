@@ -10,6 +10,16 @@ body {
     overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
+/* Hide link preview on hover */
+a {
+    pointer-events: auto;
+}
+
+a::after {
+    content: attr(href);
+    display: none;
+}
+
 /* Global Container for content centering */
 .container {
     max-width: 1200px;
@@ -42,18 +52,46 @@ nav {
 }
 
 .logo {
-    font-size: 1.8em;
+    font-size: 1.53em;
     font-weight: 600;
-    color: #0f3460; /* A vibrant blue for the logo */
+    color: #1199d3;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.logo:hover {
+    color: #0d7aa8;
 }
 
 nav ul {
     list-style: none;
     margin: 0;
-    padding: 0;
-    display: flex; /* Display list items horizontally */
-    gap: 30px; /* Add space between navigation items */
-    transition: transform 0.5s ease-in-out; /* Add transition for mobile menu */
+    padding: 20px 0;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    height: auto;
+    max-height: calc(100vh - 60px);
+    background-color: #16213e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 40%;
+    transform: translateX(100%);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.5s ease-in-out;
+    overflow-y: auto;
+}
+
+nav ul.nav-active {
+    transform: translateX(0);
+}
+
+nav ul li {
+    opacity: 1;
+    margin: 15px 0;
 }
 
 
@@ -62,24 +100,25 @@ nav ul li a {
     color: #e0e0e0;
     text-decoration: none;
     font-weight: 400;
-    font-size: 1.1em;
+    font-size: 1.28em;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #e94560; /* A contrasting red for hover */
+    color: #e0b50c; /* A contrasting red for hover */
     transform: translateY(-3px);
+
 }
 
 /* Hamburger styles */
 .hamburger {
-    display: none; /* Hidden by default on larger screens */
+    display: flex;
     cursor: pointer;
     flex-direction: column;
     justify-content: space-around;
     width: 30px;
     height: 25px;
-    z-index: 1001; /* Ensure it's above other content */
+    z-index: 1001;
 }
 
 .hamburger .line {
@@ -122,16 +161,16 @@ nav ul li a:hover {
 }
 
 .hero h1 {
-    font-size: 3.5em;
-    margin-bottom: 10px;
+    font-size: 2.98em;
+    margin-bottom: 8.5px;
     line-height: 1.2;
 }
 
 .hero p {
-    font-size: 1.5em;
-    margin-bottom: 30px;
+    font-size: 1.28em;
+    margin-bottom: 25.5px;
     color: #b0b0b0;
-    display: flex; /* To align cursor with text */
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -144,10 +183,10 @@ nav ul li a:hover {
     display: inline-block;
     background-color: #e94560;
     color: #fff;
-    padding: 12px 25px;
+    padding: 10px 21px;
     border-radius: 5px;
     text-decoration: none;
-    font-size: 1.1em;
+    font-size: 0.94em;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -169,7 +208,7 @@ nav ul li a:hover {
 
 /* Sections General Styling */
 section {
-    padding: 80px 0;
+    padding: 68px 0;
     text-align: center;
     position: relative;
 }
@@ -179,8 +218,8 @@ section:nth-of-type(even) {
 }
 
 section h2 {
-    font-size: 2.5em;
-    margin-bottom: 40px;
+    font-size: 2.13em;
+    margin-bottom: 34px;
     color: #e94560;
     position: relative;
     display: inline-block;
@@ -200,28 +239,28 @@ section h2::after {
 
 /* About Me Section */
 .about-me p {
-    max-width: 800px;
-    margin: 0 auto 20px auto;
-    font-size: 1.1em;
+    max-width: 680px;
+    margin: 0 auto 17px auto;
+    font-size: 0.94em;
     color: #c0c0c0;
 }
 
 /* Skills Section */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-    margin-top: 40px;
-    max-width: 900px;
+    grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+    gap: 17px;
+    margin-top: 34px;
+    max-width: 765px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .skill-item {
     background-color: #0f3460;
-    padding: 20px;
-    border-radius: 8px;
-    font-size: 1.2em;
+    padding: 17px;
+    border-radius: 7px;
+    font-size: 1.02em;
     font-weight: 600;
     color: #e0e0e0;
     transition: transform 0.3s ease, background-color 0.3s ease;
@@ -236,20 +275,19 @@ section h2::after {
 /* Projects Section */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+    gap: 25.5px;
+    margin-top: 34px;
 }
 
 .project-card {
     background-color: #16213e;
-    padding: 30px;
-    border-radius: 8px;
+    padding: 25.5px;
+    border-radius: 7px;
     text-align: left;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none;
-    
 }
 
 .project-card:hover {
@@ -260,13 +298,13 @@ section h2::after {
 .project-card h3 {
     color: #e94560;
     margin-top: 0;
-    font-size: 1.8em;
+    font-size: 1.53em;
 }
 
 .project-card p {
     color: #c0c0c0;
-    font-size: 1em;
-    margin-bottom: 20px;
+    font-size: 0.85em;
+    margin-bottom: 17px;
 }
 
 .project-link {
@@ -290,22 +328,22 @@ section h2::after {
 
 /* Contact Section */
 .contact-form {
-    max-width: 600px;
-    margin: 40px auto 20px auto;
+    max-width: 510px;
+    margin: 34px auto 17px auto;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 17px;
 }
 
 .contact-form input[type="text"],
 .contact-form input[type="email"],
 .contact-form textarea {
-    padding: 15px;
+    padding: 12.75px;
     border: 1px solid #0f3460;
     border-radius: 5px;
     background-color: #1a1a2e;
     color: #e0e0e0;
-    font-size: 1em;
+    font-size: 0.85em;
     transition: border-color 0.3s ease;
 }
 
@@ -332,8 +370,8 @@ section h2::after {
 .social-links a {
     color: #e0e0e0;
     text-decoration: none;
-    font-size: 1.2em;
-    margin: 0 15px;
+    font-size: 1.02em;
+    margin: 0 12.75px;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
@@ -369,65 +407,23 @@ footer {
     50% { opacity: 0; }
 }
 
+/* Animation for nav links */
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
-    nav {
-        flex-direction: row; /* Keep logo and hamburger on one line */
-        justify-content: space-between;
-    }
-
-    .nav-links { /* Target the ul with the new class */
-        position: absolute;
-        right: 0;
-        top: 60px; /* Adjust based on header height */
-        height: calc(100vh - 60px); /* Full height below header */
-        background-color: #16213e; /* Same as header */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 70%; /* Adjust width of mobile menu */
-        transform: translateX(100%); /* Hide by default */
-        padding: 20px 0;
-        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
-    }
-
-    .nav-links.nav-active {
-        transform: translateX(0); /* Show when active */
-    }
-
-    .nav-links li {
-        opacity: 0; /* Hide individual items for staggered animation */
-        margin: 20px 0; /* Vertical spacing */
-    }
-
-    .nav-links li a {
+    .logo {
         font-size: 1.5em;
     }
-
-    .hamburger {
-        display: flex; /* Show hamburger on small screens */
-    }
-
-    /* Animation for nav links */
-    @keyframes navLinkFade {
-        from {
-            opacity: 0;
-            transform: translateX(50px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    .nav-links.nav-active li {
-        animation: navLinkFade 0.5s ease forwards; /* Staggered animation */
-    }
-    .nav-links.nav-active li:nth-child(1) { animation-delay: 0.2s; }
-    .nav-links.nav-active li:nth-child(2) { animation-delay: 0.3s; }
-    .nav-links.nav-active li:nth-child(3) { animation-delay: 0.4s; }
-    .nav-links.nav-active li:nth-child(4) { animation-delay: 0.5s; }
-    .nav-links.nav-active li:nth-child(5) { animation-delay: 0.6s; }
 
     .hero h1 {
         font-size: 2.5em;
@@ -452,11 +448,7 @@ footer {
 
 @media (max-width: 480px) {
     .logo {
-        font-size: 1.5em;
-    }
-
-    nav ul li a {
-        font-size: 1em;
+        font-size: 1.3em;
     }
 
     .hero h1 {
