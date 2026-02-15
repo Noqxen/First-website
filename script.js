@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scrolling for navigation links
+    
     document.querySelectorAll('nav ul li a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -10,13 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Fade-in and slide-up animation for sections on scroll
+   
     const sections = document.querySelectorAll('section');
 
     const observerOptions = {
         root: null, // viewport
         rootMargin: '0px',
-        threshold: 0.1 // Trigger when 10% of the section is visible
+        threshold: 0.1 
     };
 
     const sectionObserver = new IntersectionObserver((entries, observer) => {
@@ -25,13 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.style.opacity = 1;
                 entry.target.style.transform = 'translateY(0)';
                 entry.target.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-                observer.unobserve(entry.target); // Stop observing once animated
+                observer.unobserve(entry.target); 
             }
         });
     }, observerOptions);
 
     sections.forEach(section => {
-        // Skip the hero section as it has its own initial animation
+        
         if (section.id !== 'home') {
             section.style.opacity = 0;
             section.style.transform = 'translateY(20px)';
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Typewriter effect for hero section
+  
     const typewriterTextElement = document.getElementById('typewriter-text');
     const roles = [" Web Developer", "Coder", "Student", "Problem Solver"];
     let roleIndex = 0;
@@ -62,25 +62,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (!isDeleting && charIndex === currentRole.length) {
-            typeSpeed = 1500; // Pause at end of typing
+            typeSpeed = 1500; 
             isDeleting = true;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
-            roleIndex = (roleIndex + 1) % roles.length; // Move to next role
-            typeSpeed = 500; // Pause before typing next role
+            roleIndex = (roleIndex + 1) % roles.length; 
+            typeSpeed = 500; 
         }
 
         setTimeout(typeWriter, typeSpeed);
     }
 
-    // Start the typewriter effect after a delay
+ 
     if (typewriterTextElement) {
         setTimeout(typeWriter, 1000);
     }
 
 
 
-    // Hamburger menu functionality
+  
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hamburger.classList.toggle('active');
         });
 
-        // Close nav when clicking outside
+
         document.addEventListener('click', (e) => {
             if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
                 if (navLinks.classList.contains('nav-active')) {
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Close nav when a link is clicked
+       
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (navLinks.classList.contains('nav-active')) {
