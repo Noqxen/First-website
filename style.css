@@ -63,6 +63,21 @@ nav {
     color: #0d7aa8;
 }
 
+.login-btn {
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #fff;
+    background-color: #e94560;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #ba374e;
+}
+
 nav ul {
     list-style: none;
     margin: 0;
