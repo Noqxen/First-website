@@ -5,6 +5,14 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 const { createClient } = supabase;
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
 
+// Prevent invalid characters in username field
+const usernameInput = document.getElementById('signupUsername');
+if (usernameInput) {
+    usernameInput.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/[^a-z0-9_]/g, '');
+    });
+}
+
 // Sign Up
 const signupForm = document.getElementById('signupForm');
 if (signupForm) {
@@ -19,11 +27,6 @@ if (signupForm) {
         // Password validation
         const passwordRegex = /^(?=.*[0-9!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
         const usernameRegex = /^[a-z0-9_]+$/;
-        
-        if (!usernameRegex.test(username)) {
-            alert('Username can only contain lowercase letters, numbers, and underscores!');
-            return;
-        }
         
         if (password !== confirmPassword) {
             alert('Passwords do not match!');
