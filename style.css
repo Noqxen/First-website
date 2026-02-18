@@ -57,6 +57,7 @@ nav {
     text-decoration: none;
     cursor: pointer;
     transition: color 0.3s ease;
+    margin-right: auto;
 }
 
 .logo:hover {
@@ -72,6 +73,7 @@ nav {
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s ease;
+    margin-right: 20px;
 }
 
 .login-btn:hover {
