@@ -4,13 +4,13 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #1a1a2e; /* Dark background */
-    color: #e0e0e0; /* Light text */
+    background-color: #1a1a2e; 
+    color: #e0e0e0; 
     line-height: 1.6;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden;
 }
 
-/* Hide link preview on hover */
+
 a {
     pointer-events: auto;
 }
@@ -20,16 +20,15 @@ a::after {
     display: none;
 }
 
-/* Global Container for content centering */
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
-/* Header and Navigation */
 header {
-    background-color: #16213e; /* Slightly lighter dark blue */
+    background-color: #16213e; 
     padding: 15px 0;
     position: fixed;
     width: 100%;
@@ -37,17 +36,17 @@ header {
     left: 0;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    display: flex; /* Make header a flex container */
-    justify-content: center; /* Center its content horizontally */
-    align-items: center; /* Center its content vertically */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%; /* Ensure it takes full width within the header */
-    max-width: 1200px; /* Constrain content width */
+    width: 100%; 
+    max-width: 1200px; 
     padding: 0 20px; /* Add horizontal padding */
 }
 
@@ -105,12 +104,12 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #e0b50c; /* A contrasting red for hover */
+    color: #e0b50c; 
     transform: translateY(-3px);
 
 }
 
-/* Hamburger styles */
+
 .hamburger {
     display: flex;
     cursor: pointer;
@@ -141,21 +140,21 @@ nav ul li a:hover {
     transform: translateY(-11px) rotate(-45deg);
 }
 
-/* Hero Section */
+
 .hero {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: linear-gradient(135deg, #0f3460, #1a1a2e); /* Gradient background */
+    background: linear-gradient(135deg, #0f3460, #1a1a2e); 
     color: #e0e0e0;
-    padding-top: 80px; /* Offset for fixed header */
+    padding-top: 80px; 
 }
 
 .hero-content {
-    opacity: 0; /* Will be animated with JS */
-    transform: translateY(20px); /* Will be animated with JS */
+    opacity: 0; 
+    transform: translateY(20px); 
     animation: fadeInSlideUp 1s forwards;
     animation-delay: 0.5s;
 }
@@ -176,7 +175,7 @@ nav ul li a:hover {
 }
 
 .highlight {
-    color: #e94560; /* Highlight color */
+    color: #e94560; 
 }
 
 .btn {
@@ -196,7 +195,7 @@ nav ul li a:hover {
     text-decoration: none;
 }
 
-/* Cursor for typewriter effect */
+
 .cursor {
     display: inline-block;
     background-color: #e94560;
@@ -237,7 +236,7 @@ section h2::after {
     border-radius: 5px;
 }
 
-/* About Me Section */
+
 .about-me p {
     max-width: 680px;
     margin: 0 auto 17px auto;
@@ -245,7 +244,7 @@ section h2::after {
     color: #c0c0c0;
 }
 
-/* Skills Section */
+
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
@@ -272,7 +271,7 @@ section h2::after {
     background-color: #e94560;
 }
 
-/* Projects Section */
+
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
@@ -326,7 +325,7 @@ section h2::after {
     
 }
 
-/* Contact Section */
+
 .contact-form {
     max-width: 510px;
     margin: 34px auto 17px auto;
@@ -380,7 +379,7 @@ section h2::after {
     transform: translateY(-3px);
 }
 
-/* Footer */
+
 footer {
     background-color: #0f3460;
     color: #e0e0e0;
@@ -390,7 +389,7 @@ footer {
     margin-top: 50px;
 }
 
-/* Animations */
+
 @keyframes fadeInSlideUp {
     from {
         opacity: 0;
@@ -407,7 +406,7 @@ footer {
     50% { opacity: 0; }
 }
 
-/* Animation for nav links */
+
 @keyframes navLinkFade {
     from {
         opacity: 0;
@@ -419,7 +418,7 @@ footer {
     }
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .logo {
         font-size: 1.5em;
