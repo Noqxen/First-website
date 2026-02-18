@@ -18,6 +18,12 @@ if (signupForm) {
 
         // Password validation
         const passwordRegex = /^(?=.*[0-9!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+        const usernameRegex = /^[a-z0-9_]+$/;
+        
+        if (!usernameRegex.test(username)) {
+            alert('Username can only contain lowercase letters, numbers, and underscores!');
+            return;
+        }
         
         if (password !== confirmPassword) {
             alert('Passwords do not match!');
