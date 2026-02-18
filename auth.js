@@ -80,10 +80,34 @@ if (loginForm) {
     });
 }
 
-// Check if user is logged in
+// Check if user is logged in and update UI
 async function checkAuth() {
     const { data: { user } } = await supabaseClient.auth.getUser();
     return user;
+}
+
+// Update header based on auth state
+async function updateHeader() {
+    const user = await checkAuth();
+    const loginBtn = document.querySelector('.login-btn');
+    const hamburger = document.querySelector('.hamburger');
+    
+    if (user && loginBtn) {
+        loginBtn.style.display = 'none';
+        
+        // Create profile picture
+        const profilePic = document.createElement('div');
+        profilePic.className = 'profile-pic';
+        profilePic.textContent = user.user_metadata?.name?.charAt(0).toUpperCase() || user.email.charAt(0).toUpperCase();
+        profilePic.onclick = logout;
+        
+        hamburger.parentNode.insertBefore(profilePic, hamburger);
+    }
+}
+
+// Call on page load
+if (document.querySelector('.login-btn')) {
+    updateHeader();
 }
 
 // Logout function
