@@ -90,7 +90,7 @@ async function checkAuth() {
 async function updateHeader() {
     const user = await checkAuth();
     const loginBtn = document.querySelector('.login-btn');
-    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('nav');
     
     if (user && loginBtn) {
         loginBtn.style.display = 'none';
@@ -99,11 +99,37 @@ async function updateHeader() {
         const profilePic = document.createElement('div');
         profilePic.className = 'profile-pic';
         profilePic.textContent = user.user_metadata?.name?.charAt(0).toUpperCase() || user.email.charAt(0).toUpperCase();
-        profilePic.onclick = logout;
+        profilePic.onclick = toggleProfileMenu;
         
-        hamburger.parentNode.insertBefore(profilePic, hamburger);
+        // Create profile dropdown menu
+        const profileMenu = document.createElement('div');
+        profileMenu.className = 'profile-menu';
+        profileMenu.innerHTML = `
+            <a href="profile.html">Edit Profile</a>
+            <a href="#" onclick="logout(); return false;">Logout</a>
+        `;
+        
+        nav.appendChild(profilePic);
+        nav.appendChild(profileMenu);
     }
 }
+
+// Toggle profile menu
+function toggleProfileMenu() {
+    const menu = document.querySelector('.profile-menu');
+    if (menu) {
+        menu.classList.toggle('show');
+    }
+}
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    const menu = document.querySelector('.profile-menu');
+    const profilePic = document.querySelector('.profile-pic');
+    if (menu && !profilePic?.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.remove('show');
+    }
+});
 
 // Call on page load
 if (document.querySelector('.login-btn')) {

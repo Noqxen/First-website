@@ -92,12 +92,42 @@ nav {
     font-size: 1.2em;
     font-weight: 600;
     cursor: pointer;
-    margin-right: 20px;
     transition: background-color 0.3s ease;
+    position: relative;
+    z-index: 1002;
 }
 
 .profile-pic:hover {
     background-color: #ba374e;
+}
+
+.profile-menu {
+    position: absolute;
+    top: 60px;
+    right: 60px;
+    background-color: #16213e;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+    min-width: 150px;
+    display: none;
+    z-index: 1001;
+}
+
+.profile-menu.show {
+    display: block;
+}
+
+.profile-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.profile-menu a:hover {
+    background-color: #0f3460;
 }
 
 nav ul {
