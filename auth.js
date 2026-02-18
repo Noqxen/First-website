@@ -10,12 +10,34 @@ const signupForm = document.getElementById('signupForm');
 if (signupForm) {
     signupForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        const name = document.getElementById('signupName').value;
+        const username = document.getElementById('signupUsername').value;
         const email = document.getElementById('signupEmail').value;
         const password = document.getElementById('signupPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        // Password validation
+        const passwordRegex = /^(?=.*[0-9!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+        
+        if (password !== confirmPassword) {
+            alert('Passwords do not match!');
+            return;
+        }
+        
+        if (!passwordRegex.test(password)) {
+            alert('Password must be at least 8 characters and contain at least one number or special character!');
+            return;
+        }
 
         const { data, error } = await supabaseClient.auth.signUp({
             email: email,
             password: password,
+            options: {
+                data: {
+                    name: name,
+                    username: username
+                }
+            }
         });
 
         if (error) {
