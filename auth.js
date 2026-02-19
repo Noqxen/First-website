@@ -104,7 +104,15 @@ async function updateHeader() {
         // Create profile picture
         const profilePic = document.createElement('div');
         profilePic.className = 'profile-pic';
-        profilePic.textContent = user.user_metadata?.name?.charAt(0).toUpperCase() || user.email.charAt(0).toUpperCase();
+        
+        if (user.user_metadata?.profile_pic) {
+            profilePic.style.backgroundImage = `url(${user.user_metadata.profile_pic})`;
+            profilePic.style.backgroundSize = 'cover';
+            profilePic.style.backgroundPosition = 'center';
+        } else {
+            profilePic.textContent = user.user_metadata?.name?.charAt(0).toUpperCase() || user.email.charAt(0).toUpperCase();
+        }
+        
         profilePic.onclick = toggleProfileMenu;
         
         // Create profile dropdown menu
