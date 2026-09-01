@@ -1,6 +1,6 @@
 // Replace these with your Supabase project credentials
-const SUPABASE_URL = 'https://dasyfwepnpfhvmltxywf.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhc3lmd2VwbnBmaHZtbHR4eXdmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE0MjMyMTEsImV4cCI6MjA4Njk5OTIxMX0.0G7DW_aubEGE4siP1m79bzxfgEAnlZDNv5xgaYHvpNE';
+const SUPABASE_URL = 'https://pazutpfupsfoekknvjgb.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBhenV0cGZ1cHNmb2Vra252amdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgyMjMwNjksImV4cCI6MjEwMzc5OTA2OX0.9eu4HYVmBI9mM-QRRtPpfGPlwr12Yxx4aIcK02s-ZTM';
 
 const { createClient } = supabase;
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY, {
