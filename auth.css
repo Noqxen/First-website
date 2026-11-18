@@ -1,88 +1,67 @@
 .auth-container {
     min-height: 100vh;
-    display: grid;
-    place-items: center;
-    padding: 32px 20px;
-    background: var(--sun);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f3460, #1a1a2e);
 }
 
 .auth-box {
+    background-color: #16213e;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
     width: 100%;
-    max-width: 24rem;
-    padding: 32px 28px;
-    background: var(--paper);
-    border: 2px solid var(--ink);
-    box-shadow: 6px 6px 0 var(--ink);
+    max-width: 400px;
 }
 
 .auth-box h2 {
-    margin: 0 0 1.5rem;
-    font-size: 2rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
+    color: #e94560;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
 }
 
 .auth-box form {
-    display: grid;
-    gap: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.auth-box input {
+    padding: 12px;
+    border: 1px solid #0f3460;
+    border-radius: 5px;
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.auth-box input:focus {
+    border-color: #e94560;
+    outline: none;
 }
 
 .auth-box .btn {
     width: 100%;
-}
-
-.auth-box .btn-quiet {
-    width: auto;
-    padding: 0.5rem 1rem;
-    background: none;
-    color: var(--ink);
-}
-
-.auth-box .btn-quiet:hover {
-    background: var(--sun);
-    color: var(--ink);
+    cursor: pointer;
+    border: none;
 }
 
 .auth-switch {
-    margin: 1.25rem 0 0;
-    color: var(--muted);
-    font-size: 0.95rem;
-}
-
-.auth-switch + .auth-switch {
-    margin-top: 0.5rem;
+    text-align: center;
+    margin-top: 20px;
+    color: #c0c0c0;
+    font-size: 0.9em;
 }
 
 .auth-switch a {
-    color: var(--ink);
-    font-weight: 700;
+    color: #e94560;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .auth-switch a:hover {
-    color: var(--red);
-}
-
-/* Profile page */
-.avatar-row {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.avatar {
-    flex: none;
-    width: 88px;
-    height: 88px;
-    border: 2px solid var(--ink);
-    border-radius: 50%;
-    object-fit: cover;
-    background: var(--rule);
-}
-
-.field-note {
-    display: none;
-    margin-top: -6px;
-    color: var(--red);
-    font-size: 0.9rem;
+    color: #ba374e;
 }
