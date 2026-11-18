@@ -176,7 +176,7 @@ nav ul {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 40%;
+    width: 30%;
     transform: translateX(100%);
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
     transition: transform 0.5s ease-in-out;
