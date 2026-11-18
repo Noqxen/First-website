@@ -3,30 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit profile - Pukar Poudel</title>
+    <title>Edit Profile - Pukar Poudel</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="auth.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="auth-container">
         <div class="auth-box">
-            <h2>Edit profile</h2>
+            <h2>Edit Profile</h2>
             <form id="profileForm">
-                <div class="avatar-row">
-                    <img id="profileImage" class="avatar" src="" alt="Profile picture">
-                    <input type="file" id="profilePicInput" accept="image/*" hidden>
-                    <button type="button" onclick="document.getElementById('profilePicInput').click()" class="btn btn-quiet">Change picture</button>
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <img id="profileImage" src="" alt="Profile" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; background: #e94560;">
+                    <input type="file" id="profilePicInput" accept="image/*" style="display: none;">
+                    <button type="button" onclick="document.getElementById('profilePicInput').click()" class="btn" style="margin-top: 10px; width: auto;">Change Picture</button>
                 </div>
-                <input type="text" id="profileName" placeholder="Full name" aria-label="Full name" required>
-                <small id="nameWarning" class="field-note"></small>
-                <input type="text" id="profileUsername" placeholder="Username" aria-label="Username" required>
-                <small id="usernameWarning" class="field-note"></small>
-                <button type="submit" class="btn">Update profile</button>
+                <input type="text" id="profileName" placeholder="Full Name" required>
+                <small id="nameWarning" style="color: #e94560; display: none;"></small>
+                <input type="text" id="profileUsername" placeholder="Username" required>
+                <small id="usernameWarning" style="color: #e94560; display: none;"></small>
+                <button type="submit" class="btn">Update Profile</button>
             </form>
-            <p class="auth-switch"><a href="index.html">Back to home</a></p>
+            <p class="auth-switch"><a href="index.html">Back to Home</a></p>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
