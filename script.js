@@ -110,4 +110,43 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Scroll progress bar, and header that hides on scroll down / returns on scroll up
+    const header = document.querySelector('header');
+    const progressBar = document.querySelector('.scroll-progress');
+    let lastScrollY = window.scrollY;
+    let scrollTicking = false;
+
+    function onScroll() {
+        const y = window.scrollY;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+
+        if (progressBar) {
+            progressBar.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')';
+        }
+
+        if (header) {
+            if (y > lastScrollY && y > 80) {
+                header.classList.add('hide');
+                if (navLinks && hamburger) {
+                    navLinks.classList.remove('nav-active');
+                    hamburger.classList.remove('active');
+                }
+            } else if (y < lastScrollY) {
+                header.classList.remove('hide');
+            }
+        }
+
+        lastScrollY = y;
+        scrollTicking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!scrollTicking) {
+            requestAnimationFrame(onScroll);
+            scrollTicking = true;
+        }
+    }, { passive: true });
+
+    onScroll();
 });
