@@ -3,27 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign up - Pukar Poudel</title>
+    <title>Sign Up - Pukar Poudel</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="auth.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="auth-container">
         <div class="auth-box">
-            <h2>Sign up</h2>
+            <h2>Sign Up</h2>
             <form id="signupForm">
-                <input type="text" id="signupName" placeholder="Full name" aria-label="Full name" required>
-                <input type="text" id="signupUsername" placeholder="Username" aria-label="Username" required>
-                <input type="email" id="signupEmail" placeholder="Email" aria-label="Email" required>
-                <input type="password" id="signupPassword" placeholder="Password (min 8 characters)" aria-label="Password" required>
-                <input type="password" id="confirmPassword" placeholder="Confirm password" aria-label="Confirm password" required>
-                <button type="submit" class="btn">Sign up</button>
+                <input type="text" id="signupName" placeholder="Full Name" required>
+                <input type="text" id="signupUsername" placeholder="Username" required>
+                <input type="email" id="signupEmail" placeholder="Email" required>
+                <input type="password" id="signupPassword" placeholder="Password (min 8 characters)" required>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                <button type="submit" class="btn">Sign Up</button>
             </form>
             <p class="auth-switch">Already have an account? <a href="login.html">Login</a></p>
-            <p class="auth-switch"><a href="index.html">Back to home</a></p>
+            <p class="auth-switch"><a href="index.html">Back to Home</a></p>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
