@@ -1,88 +1,113 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const header = document.querySelector('header');
+    
+    document.querySelectorAll('nav ul li a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+   
+    const sections = document.querySelectorAll('section');
+
+    const observerOptions = {
+        root: null, // viewport
+        rootMargin: '0px',
+        threshold: 0.1 
+    };
+
+    const sectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+                entry.target.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.unobserve(entry.target); 
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        
+        if (section.id !== 'home') {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            sectionObserver.observe(section);
+        }
+    });
+
+  
+    const typewriterTextElement = document.getElementById('typewriter-text');
+    const roles = [" Web Developer", "Coder", "Student", "Problem Solver"];
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeWriter() {
+        const currentRole = roles[roleIndex];
+        if (isDeleting) {
+            typewriterTextElement.textContent = currentRole.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            typewriterTextElement.textContent = currentRole.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        let typeSpeed = 150; // Typing speed
+        if (isDeleting) {
+            typeSpeed /= 2; // Deleting faster
+        }
+
+        if (!isDeleting && charIndex === currentRole.length) {
+            typeSpeed = 1500; 
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length; 
+            typeSpeed = 500; 
+        }
+
+        setTimeout(typeWriter, typeSpeed);
+    }
+
+ 
+    if (typewriterTextElement) {
+        setTimeout(typeWriter, 1000);
+    }
+
+
+
+  
     const hamburger = document.querySelector('.hamburger');
-    const menu = document.querySelector('.nav-links');
-    const progress = document.querySelector('.scroll-progress');
+    const navLinks = document.querySelector('.nav-links');
 
-    /* ---------- Menu ---------- */
-    function setOpen(open) {
-        if (!menu || !hamburger) return;
-        menu.classList.toggle('nav-active', open);
-        hamburger.classList.toggle('active', open);
-        hamburger.setAttribute('aria-expanded', String(open));
-    }
-
-    if (hamburger && menu) {
+    if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => {
-            setOpen(!menu.classList.contains('nav-active'));
+            navLinks.classList.toggle('nav-active');
+            hamburger.classList.toggle('active');
         });
 
-        // Close when clicking outside the menu
+
         document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !menu.contains(e.target)) {
-                setOpen(false);
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                if (navLinks.classList.contains('nav-active')) {
+                    navLinks.classList.remove('nav-active');
+                    hamburger.classList.remove('active');
+                }
             }
         });
 
-        // Close after picking a link
-        menu.querySelectorAll('a').forEach((link) => {
-            link.addEventListener('click', () => setOpen(false));
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') setOpen(false);
-        });
-    }
-
-    /* ---------- Scroll progress bar and header that hides on the way down ---------- */
-    let lastY = window.scrollY;
-    let ticking = false;
-
-    function onScroll() {
-        const y = window.scrollY;
-        const max = document.documentElement.scrollHeight - window.innerHeight;
-
-        if (progress) {
-            progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')';
-        }
-
-        if (header) {
-            if (y > lastY && y > 120) {
-                header.classList.add('hide');
-                setOpen(false);
-            } else if (y < lastY) {
-                header.classList.remove('hide');
-            }
-        }
-
-        lastY = y;
-        ticking = false;
-    }
-
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            requestAnimationFrame(onScroll);
-            ticking = true;
-        }
-    }, { passive: true });
-
-    onScroll();
-
-    /* ---------- Reveal content as it scrolls into view ---------- */
-    const items = document.querySelectorAll('[data-reveal]');
-
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('in');
-                    observer.unobserve(entry.target);
+       
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('nav-active')) {
+                    navLinks.classList.remove('nav-active');
+                    hamburger.classList.remove('active');
                 }
             });
-        }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
-
-        items.forEach((el) => observer.observe(el));
-    } else {
-        items.forEach((el) => el.classList.add('in'));
+        });
     }
 });
